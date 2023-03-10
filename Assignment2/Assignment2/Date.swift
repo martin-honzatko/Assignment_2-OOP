@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Date: Comparable, CustomStringConvertible {
+struct Date: Comparable, CustomStringConvertible, Equatable {
 	/**********************************************************************/
 	/*			PRIVATE PROPERTIES				 */
 	/**********************************************************************/

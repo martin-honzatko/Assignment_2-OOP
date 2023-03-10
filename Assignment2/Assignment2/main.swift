@@ -17,7 +17,7 @@ print(d2)
 d1.show()
 d2.show()
 
-d1.input() // allow user to enter a date for d1
+d1.input() //3/31/1 - allow user to enter a date for d1
 d1.show()  // date must be updated based on the input above
 
 d1.setFormat(.long)  // change the format of d1 to long format

@@ -8,6 +8,9 @@
 import Foundation
 
 struct Date: Comparable, CustomStringConvertible {
+	/**********************************************************************/
+	/*			PRIVATE PROPERTIES				 */
+	/**********************************************************************/
 	private let DEFAULT_MONTH: Int = 1
 	private let DEFAULT_DAY: Int = 1
 	private let DEFAULT_YEAR: Int = 2000
@@ -21,6 +24,9 @@ struct Date: Comparable, CustomStringConvertible {
 	private var correctD = false
 	private var correctY = false
 	
+	/**********************************************************************/
+	/*	PRIVATE(SET) AND INTERNAL PROPERTIES	 */
+	/**********************************************************************/
 	private(set) var month: Int {
 		get { return _month}
 		set {
@@ -123,6 +129,9 @@ struct Date: Comparable, CustomStringConvertible {
 	
 	var format: DateFormat = .standard
 	
+	/**********************************************************************/
+	/*				INITIALIZER					 */
+	/**********************************************************************/
 	init(month: Int = 1, day: Int = 1, year: Int = 2000) {
 		self._month = 1
 		self._day = 1
@@ -139,10 +148,28 @@ struct Date: Comparable, CustomStringConvertible {
 		}
 	}
 	
+	/**********************************************************************/
+	/*				DESCRIPTION					 */
+	/**********************************************************************/
 	var description: String {
 		return "\(self.month)/\(self.day)/\(self.year)"
 	}
 	
+	/**********************************************************************/
+	/*			INTERNAL FUNCTIONS				 */
+	/**********************************************************************/
+	func show() {
+		switch self.format {
+			case .standard:
+				print("\(self.month)/\(self.day)/\(self.year)")
+			case .two:
+				print(String(format: "%02d/%02d/%d", self.month, self.day, self.year%100))
+			case .long:
+				print("\(self.MONTHS[self.month].1.prefix(3)) \(self.day), \(self.year)")
+		}
+	}
+	
+	/***************MUTATING FUNCTIONS*************************/
 	mutating func setFormat(_ format: DateFormat) {
 		self.format = format
 	}
@@ -168,17 +195,6 @@ struct Date: Comparable, CustomStringConvertible {
 			} else {
 				correctI = true
 			}
-		}
-	}
-	
-	func show() {
-		switch self.format {
-			case .standard:
-				print("\(self.month)/\(self.day)/\(self.year)")
-			case .two:
-				print(String(format: "%02d/%02d/%d", self.month, self.day, self.year%100))
-			case .long:
-				print("\(self.MONTHS[self.month].1.prefix(3)) \(self.day), \(self.year)")
 		}
 	}
 	
@@ -221,6 +237,9 @@ struct Date: Comparable, CustomStringConvertible {
 		}
 	}
 	
+	/**********************************************************************/
+	/*			STATIC FUNCTIONS				 */
+	/**********************************************************************/
 	static func <(lhs: Date, rhs: Date) -> Bool {
 		return lhs.year < rhs.year && lhs.month < rhs.month && lhs.day < rhs.day
 	}

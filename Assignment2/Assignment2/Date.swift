@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Date: Comparable {
+struct Date: Comparable, CustomStringConvertible {
 	private let DEFAULT_MONTH: Int = 1
 	private let DEFAULT_DAY: Int = 1
 	private let DEFAULT_YEAR: Int = 2000
@@ -139,6 +139,10 @@ struct Date: Comparable {
 		}
 	}
 	
+	var description: String {
+		return "Date(month: \(self.month), day: \(self.day), year: \(self.year), format: \(self.format))"
+	}
+	
 	mutating func setFormat(_ format: DateFormat) {
 		self.format = format
 	}
@@ -150,7 +154,7 @@ struct Date: Comparable {
 		var correctI = false
 		
 		while correctI == false {
-			print("Enter date (format: M/D/Y)", terminator: "")
+			print("Enter date (format: M/D/Y):", terminator: " ")
 			let userInput: String = readLine() ?? ""
 			
 			let strs: [String] = userInput.components(separatedBy: "/")

@@ -140,7 +140,7 @@ struct Date: Comparable, CustomStringConvertible {
 	}
 	
 	var description: String {
-		return "Date(month: \(self.month), day: \(self.day), year: \(self.year), format: \(self.format))"
+		return "\(self.month)/\(self.day)/\(self.year)"
 	}
 	
 	mutating func setFormat(_ format: DateFormat) {

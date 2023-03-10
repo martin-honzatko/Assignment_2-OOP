@@ -22,6 +22,9 @@ d1.show()  // date must be updated based on the input above
 
 d1.setFormat(.long)  // change the format of d1 to long format
 d1.show()            // show in long format
+print("increment by 1...")
+d1.increment(1)
+d1.show()
 print("increment by 100...")
 d1.increment(100)
 d1.show()

@@ -203,7 +203,18 @@ struct Date: Comparable {
 	}
 	
 	mutating func increment(_ numDays: Int = 1) {
-		
+		if numDays == 1 {
+			if (self.day == 30) || (self.day == 31) || (self.month == 2 && self.day == 28) || (self.month == 2 && self.day == 29) {
+				self.month += 1
+				self.day = 1
+			} else {
+				self.day += 1
+			}
+		} else if (numDays == 365) || (numDays == 366) {
+			self.year += 1
+		} else {
+			
+		}
 	}
 	
 	static func <(lhs: Date, rhs: Date) -> Bool {
